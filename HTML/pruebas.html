@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animación de Niveles</title>
+    <link rel="stylesheet" href="./CSS/pruebas.css">
+</head>
+<body>
+    <div class="curtain left"></div>
+    <div class="curtain right"></div>
+
+    <div class="container" id="levels-container">
+        <div class="level active" id="level1" onclick="startLevel(1)">1</div>
+        <div class="level disabled" id="level2">2</div>
+        <div class="level disabled" id="level3">3</div>
+        <div class="level disabled" id="level4">4</div>
+        <div class="level disabled" id="level5">5</div>
+    </div>
+
+    <div class="game-container hidden" id="game-container">
+        <div class="animation">🎉</div>
+        <p id="question"></p>
+        <input type="number" id="answer" placeholder="Tu respuesta">
+        <button onclick="checkAnswer()">Responder</button>
+    </div>
+
+    <div class="button-container" id="restart-container">
+        <button onclick="restart()">Reiniciar</button>
+    </div>
+
+    <script>
+        let currentLevel = 1;
+        const levels = document.querySelectorAll(".level");
+        const leftCurtain = document.querySelector(".curtain.left");
+        const rightCurtain = document.querySelector(".curtain.right");
+        const levelsContainer = document.getElementById("levels-container");
+        const restartContainer = document.getElementById("restart-container");
+        const gameContainer = document.getElementById("game-container");
+        const questionElement = document.getElementById("question");
+        const answerInput = document.getElementById("answer");
+
+        let currentAnswer = 0;
+
+        function startLevel(level) {
+            if (level !== currentLevel) return;
+            closeCurtain();
+            setTimeout(() => {
+                levelsContainer.classList.add("hidden");
+                gameContainer.classList.remove("hidden");
+                generateQuestion();
+                openCurtain();
+            }, 1000);
+        }
+
+        function closeCurtain() {
+            leftCurtain.style.transform = "translateX(0)";
+            rightCurtain.style.transform = "translateX(0)";
+        }
+
+        function openCurtain() {
+            setTimeout(() => {
+                leftCurtain.style.transform = "translateX(-101%)";
+                rightCurtain.style.transform = "translateX(101%)";
+            }, 1000);
+        }
+
+        function restart() {
+            closeCurtain();
+            setTimeout(() => {
+                restartContainer.style.display = "none";
+                gameContainer.classList.add("hidden");
+                levelsContainer.classList.remove("hidden");
+                activateNextLevel();
+                openCurtain();
+            }, 1000);
+        }
+
+        function activateNextLevel() {
+            if (currentLevel < levels.length) {
+                levels[currentLevel - 1].classList.remove("active");
+                levels[currentLevel - 1].classList.add("disabled");
+
+                currentLevel++;
+                levels[currentLevel - 1].classList.remove("disabled");
+                levels[currentLevel - 1].classList.add("active");
+                levels[currentLevel - 1].setAttribute("onclick", `startLevel(${currentLevel})`);
+            }
+        }
+
+        function generateQuestion() {
+            let num1 = Math.floor(Math.random() * 10) + 1;
+            let num2 = Math.floor(Math.random() * 10) + 1;
+            currentAnswer = num1 + num2;
+            questionElement.innerText = `¿Cuánto es ${num1} + ${num2}?`;
+            answerInput.value = "";
+        }
+
+        function checkAnswer() {
+            let userAnswer = parseInt(answerInput.value);
+            if (userAnswer === currentAnswer) {
+                alert("¡Correcto! Pasas al siguiente nivel.");
+                restart();
+            } else {
+                alert("Respuesta incorrecta. Inténtalo de nuevo.");
+            }
+        }
+    </script>
+
+</body>
+</html>
