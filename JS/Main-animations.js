@@ -87,33 +87,33 @@ document.addEventListener("DOMContentLoaded", () => {
     let currentQuestionIndex = 0;
     const preguntas = {
         nivel_1: [
-            { pregunta: "∫x² dx=?", opciones: ["x^3/3+C", "1/2x²+C", "x³", "x²"], respuesta: "x^3/3+C", retroalimentacion: "/ProyectoMateC/IMG/ejercicio1.png" },
-            { pregunta: "∫5x⁷ dx=?", opciones: ["5x⁸/8+C", "x⁸+C", "5/7x⁸+C", "x⁷+C"], respuesta: "5x⁸/8+C", retroalimentacion: "/ProyectoMateC/IMG/ejercicio2.png" },
-            { pregunta: "∫√x dx=?", opciones: ["2√x³/3+C", "x³", "3/4x²+C", "x³/3"], respuesta: "2√x³/3+C", retroalimentacion: "/ProyectoMateC/IMG/ejercicio3.png" }
+            { pregunta: "∫x² dx=?", opciones: ["x^3/3+C", "1/2x²+C", "x³", "x²"], respuesta: "x^3/3+C", retroalimentacion: "https://tinyint04.github.io/img/ejercicio1.png" },
+            { pregunta: "∫5x⁷ dx=?", opciones: ["5x⁸/8+C", "x⁸+C", "5/7x⁸+C", "x⁷+C"], respuesta: "5x⁸/8+C", retroalimentacion: "https://tinyint04.github.io/img/ejercicio2.png" },
+            { pregunta: "∫√x dx=?", opciones: ["2√x³/3+C", "x³", "3/4x²+C", "x³/3"], respuesta: "2√x³/3+C", retroalimentacion: "https://tinyint04.github.io/img/ejercicio3.png" }
         ],
         nivel_2: [
-            { pregunta: "∫ 5∛x² dx=?", opciones: ["3∛x^5+C", "5/2x³/2", "2/3x³/2", "x³"], respuesta: "3∛x^5+C", retroalimentacion: "/ProyectoMateC/IMG/ejercicio4.png" },
-            { pregunta: "∫5/x³ dx=?", opciones: ["-5/2x²+C", "5x³", "5x⁴", "15/4x³"], respuesta: "-5/2x²+C", retroalimentacion: "/ProyectoMateC/IMG/ejercicio5.png" },
-            { pregunta: "∫(3x²+7-∛x7)dx=?", opciones: ["x³+7x-3∛x^10/10", "x⁴+7x-x⁷", "x⁵+7x", "x³+x⁸"], respuesta: "x³+7x-3∛x^10/10", retroalimentacion: "/ProyectoMateC/IMG/ejercicio6.png" }
+            { pregunta: "∫ 5∛x² dx=?", opciones: ["3∛x^5+C", "5/2x³/2", "2/3x³/2", "x³"], respuesta: "3∛x^5+C", retroalimentacion: "https://tinyint04.github.io/img/ejercicio4.png" },
+            { pregunta: "∫5/x³ dx=?", opciones: ["-5/2x²+C", "5x³", "5x⁴", "15/4x³"], respuesta: "-5/2x²+C", retroalimentacion: "https://tinyint04.github.io/img/ejercicio5.png" },
+            { pregunta: "∫(3x²+7-∛x7)dx=?", opciones: ["x³+7x-3∛x^10/10", "x⁴+7x-x⁷", "x⁵+7x", "x³+x⁸"], respuesta: "x³+7x-3∛x^10/10", retroalimentacion: "https://tinyint04.github.io/img/ejercicio6.png" }
         ],
         nivel_3: [
-            { pregunta: "∫∛x² dx=?", opciones: ["3∛x^5+C", "x³/2", "2x³", "5x²"], respuesta: "3∛x^5+C", retroalimentacion: "/ProyectoMateC/IMG/ejercicio7.png" },
-            { pregunta: "∫-14√x dx=?", opciones: ["−28x^(3/2)/3+C", "-14x²", "-28x", "-28x³"], respuesta: "−28x^(3/2)/3+C", retroalimentacion: "/ProyectoMateC/IMG/ejercicio8.png" },
-            { pregunta: "∫7x⁵ dx=?", opciones: ["-7/4x⁴", "x⁶", "7x⁶", "7x⁵"], respuesta: "-7/4x⁴", retroalimentacion: "/ProyectoMateC/IMG/ejercicio9.png" }
+            { pregunta: "∫∛x² dx=?", opciones: ["3∛x^5+C", "x³/2", "2x³", "5x²"], respuesta: "3∛x^5+C", retroalimentacion: "https://tinyint04.github.io/img/ejercicio7.png" },
+            { pregunta: "∫-14√x dx=?", opciones: ["−28x^(3/2)/3+C", "-14x²", "-28x", "-28x³"], respuesta: "−28x^(3/2)/3+C", retroalimentacion: "https://tinyint04.github.io/img/ejercicio8.png" },
+            { pregunta: "∫7x⁵ dx=?", opciones: ["-7/4x⁴", "x⁶", "7x⁶", "7x⁵"], respuesta: "-7/4x⁴", retroalimentacion: "https://tinyint04.github.io/img/ejercicio9.png" }
         ],
         nivel_4: [
-            { pregunta: "∫1 dx=?", opciones: ["1x+C", "1", "x²", "ln(x)"], respuesta: "1x+C", retroalimentacion: "/ProyectoMateC/IMG/ejercicio10.png" },
-            { pregunta: "∫(4x³-2x+1) dx=?", opciones: ["x⁴-x²+x", "x⁵-x²+x", "x³-2x+x²", "x⁴-2x²+1"], respuesta: "x⁴-x²+x", retroalimentacion: "/ProyectoMateC/IMG/ejercicio11.png" },
-            { pregunta: "∫(1/∛x²) dx=?", opciones: ["3∛x+C", "1/2x³", "3/2x²", "x³"], respuesta: "3∛x+C", retroalimentacion: "/ProyectoMateC/IMG/ejercicio12.png" },
-            { pregunta: "∫(x⁴-6x²-2x+4) dx=?", opciones: ["2x√x-2/x⁵+C", "x⁶-x⁴+2x²", "x⁴-2x²+ x", "x³-x²"], respuesta: "2x√x-2/x⁵+C", retroalimentacion: "/ProyectoMateC/IMG/ejercicio13.png" },
-            { pregunta: "∫(2-senx) dx=?", opciones: ["2x+cos(x)+C", "2x+senx+C", "2x-cos(x)+C", "x⁴"], respuesta: "2x+cos(x)+C", retroalimentacion: "/ProyectoMateC/IMG/ejercicio14.png" },
+            { pregunta: "∫1 dx=?", opciones: ["1x+C", "1", "x²", "ln(x)"], respuesta: "1x+C", retroalimentacion: "https://tinyint04.github.io/img/ejercicio10.png" },
+            { pregunta: "∫(4x³-2x+1) dx=?", opciones: ["x⁴-x²+x", "x⁵-x²+x", "x³-2x+x²", "x⁴-2x²+1"], respuesta: "x⁴-x²+x", retroalimentacion: "https://tinyint04.github.io/img/ejercicio11.png" },
+            { pregunta: "∫(1/∛x²) dx=?", opciones: ["3∛x+C", "1/2x³", "3/2x²", "x³"], respuesta: "3∛x+C", retroalimentacion: "https://tinyint04.github.io/img/ejercicio12.png" },
+            { pregunta: "∫(x⁴-6x²-2x+4) dx=?", opciones: ["2x√x-2/x⁵+C", "x⁶-x⁴+2x²", "x⁴-2x²+ x", "x³-x²"], respuesta: "2x√x-2/x⁵+C", retroalimentacion: "https://tinyint04.github.io/img/ejercicio13.png" },
+            { pregunta: "∫(2-senx) dx=?", opciones: ["2x+cos(x)+C", "2x+senx+C", "2x-cos(x)+C", "x⁴"], respuesta: "2x+cos(x)+C", retroalimentacion: "https://tinyint04.github.io/img/ejercicio14.png" },
         ],
         nivel_5: [
-            { pregunta: "∫(senx+4x²) dx=?", opciones: ["4x³/3+C", "4x³/3", "4x³+C", "x⁴"], respuesta: "4x³/3+C", retroalimentacion: "/ProyectoMateC/IMG/ejercicio15.png" },
-            { pregunta: "∫(3+3tan^2x) dx=?", opciones: ["3tan(x)-C", "3Xtan(x)+C", "5x⁸tan(x)", "3tan(x)+C"], respuesta: "3tan(x)+C", retroalimentacion: "/ProyectoMateC/IMG/ejercicio16.png" },
-            { pregunta: "∫(7/sen^2x)+1 dx=?", opciones: ["7cot(x)+1x+C", "-7cot(x)+1x+C", "-7cot(x)-1x+C", "-7cot(x)+1x"], respuesta: "-7cot(x)+1x+C", retroalimentacion: "/ProyectoMateC/IMG/ejercicio17.png" },
-            { pregunta: "∫((3/√x)-x√x/4) dx=?", opciones: ["6√x+1x⁵/10+C", "x³/2", "5x²", "6√x-1x⁵/10+C"], respuesta: "6√x-1x⁵/10+C", retroalimentacion: "/ProyectoMateC/IMG/ejercicio18.png" },
-            { pregunta: "∫(x+√x) dx=?", opciones: ["(x²/2)-2x²√x³+C", "x³/2", "(x/2)+2x²√x³/3+C", "(x²/2)+2x²√x³/3+C"], respuesta: "(x²/2)+2x²√x³/3+C", retroalimentacion: "/ProyectoMateC/IMG/ejercicio19.png" }
+            { pregunta: "∫(senx+4x²) dx=?", opciones: ["4x³/3+C", "4x³/3", "4x³+C", "x⁴"], respuesta: "4x³/3+C", retroalimentacion: "https://tinyint04.github.io/img/ejercicio15.png" },
+            { pregunta: "∫(3+3tan^2x) dx=?", opciones: ["3tan(x)-C", "3Xtan(x)+C", "5x⁸tan(x)", "3tan(x)+C"], respuesta: "3tan(x)+C", retroalimentacion: "https://tinyint04.github.io/img/ejercicio16.png" },
+            { pregunta: "∫(7/sen^2x)+1 dx=?", opciones: ["7cot(x)+1x+C", "-7cot(x)+1x+C", "-7cot(x)-1x+C", "-7cot(x)+1x"], respuesta: "-7cot(x)+1x+C", retroalimentacion: "https://tinyint04.github.io/img/ejercicio17.png" },
+            { pregunta: "∫((3/√x)-x√x/4) dx=?", opciones: ["6√x+1x⁵/10+C", "x³/2", "5x²", "6√x-1x⁵/10+C"], respuesta: "6√x-1x⁵/10+C", retroalimentacion: "https://tinyint04.github.io/img/ejercicio18.png" },
+            { pregunta: "∫(x+√x) dx=?", opciones: ["(x²/2)-2x²√x³+C", "x³/2", "(x/2)+2x²√x³/3+C", "(x²/2)+2x²√x³/3+C"], respuesta: "(x²/2)+2x²√x³/3+C", retroalimentacion: "https://tinyint04.github.io/img/ejercicio19.png" }
         ]
     };
 
@@ -342,8 +342,8 @@ document.addEventListener("DOMContentLoaded", () => {
             let monstruo = document.getElementById("monstruo");
 
             // Resetear las imágenes a su estado inicial
-            caballero.src = "/ProyectoMateC/IMG/static.gif"; // Imagen estática inicial del caballero
-            monstruo.src = "/ProyectoMateC/IMG/staticM.gif"; // Imagen estática inicial del monstruo
+            caballero.src = "https://tinyint04.github.io/img/static.gif"; // Imagen estática inicial del caballero
+            monstruo.src = "https://tinyint04.github.io/img/staticM.gif"; // Imagen estática inicial del monstruo
 
             // Restablecer estilos
             caballero.style.display = "block";  // Asegurar que se muestre
@@ -446,12 +446,12 @@ document.addEventListener("DOMContentLoaded", () => {
             caballero.style.opacity = "1";
 
             if (num < 0.5) {
-                golpeAleatorio = "/ProyectoMateC/IMG/hit(1).gif";
+                golpeAleatorio = "https://tinyint04.github.io/img/hit(1).gif";
                 time = 1900;
                 caballero.style.width = `${300 * escalaCaballero}px`;
                 caballero.style.height = `${280 * escalaCaballero}px`;
             } else {
-                golpeAleatorio = "/ProyectoMateC/IMG/hit(2).gif";
+                golpeAleatorio = "https://tinyint04.github.io/img/hit(2).gif";
                 time = 2800;
                 caballero.style.width = `${200 * escalaCaballero}px`;
                 caballero.style.height = `${200 * escalaCaballero}px`;
@@ -464,7 +464,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 setTimeout(() => {
                     caballero.style.transform = "translateX(0)";
-                    caballero.src = "/ProyectoMateC/IMG/static.gif";
+                    caballero.src = "https://tinyint04.github.io/img/static.gif";
                     caballero.style.width = `${tamanoOriginal.caballero.width * escalaCaballero}px`;
                     caballero.style.height = `${tamanoOriginal.caballero.height * escalaCaballero}px`;
                     caballero.style.opacity = "1";
@@ -501,12 +501,12 @@ document.addEventListener("DOMContentLoaded", () => {
             monstruo.style.opacity = "1";
 
             if (num < 0.5) {
-                golpeAleatorio = "/ProyectoMateC/IMG/hit(1)M.gif";
+                golpeAleatorio = "https://tinyint04.github.io/img/hit(1)M.gif";
                 time = 1900;
                 monstruo.style.width = `${380 * escalaMonstruo}px`;
                 monstruo.style.height = `${380 * escalaMonstruo}px`;
             } else {
-                golpeAleatorio = "/ProyectoMateC/IMG/hit(2)M.gif";
+                golpeAleatorio = "https://tinyint04.github.io/img/hit(2)M.gif";
                 time = 2800;
                 monstruo.style.width = `${355 * escalaMonstruo}px`;
                 monstruo.style.height = `${355 * escalaMonstruo}px`;
@@ -519,7 +519,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 setTimeout(() => {
                     monstruo.style.transform = "translateX(0)";
-                    monstruo.src = "/ProyectoMateC/IMG/staticM.gif";
+                    monstruo.src = "https://tinyint04.github.io/img/staticM.gif";
                     monstruo.style.width = `${tamanoOriginal.monstruo.width * escalaMonstruo}px`;
                     monstruo.style.height = `${tamanoOriginal.monstruo.height * escalaMonstruo}px`;
                     monstruo.style.opacity = "1";
@@ -531,7 +531,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function hacerMuerteCaballero() {
         // Cambiar la imagen del caballero por el gif de la muerte
-        caballero.src = "/ProyectoMateC/IMG/death.gif";
+        caballero.src = "https://tinyint04.github.io/img/death.gif";
         caballero.style.width = `${160 * escalaCaballero}px`;
         caballero.style.height = `${150 * escalaCaballero}px`;
         setTimeout(() => {
@@ -542,7 +542,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function hacerMuerteMonstruo() {
         // Cambiar la imagen del monstruo por el gif de la muerte
-        monstruo.src = "/ProyectoMateC/IMG/deathM.gif";
+        monstruo.src = "https://tinyint04.github.io/img/deathM.gif";
         monstruo.style.width = `${300 * escalaMonstruo}px`;
         monstruo.style.height = `${300 * escalaMonstruo}px`;
         setTimeout(() => {
@@ -559,13 +559,13 @@ document.addEventListener("DOMContentLoaded", () => {
         caballero.style.transform = `translateX(${numM / 2}%)`; // 50% para centrarlo horizontalmente
 
         // Cambiamos el gif del caballero mientras se mueve hacia el centro
-        caballero.src = "IMG/start-walk.gif";
+        caballero.src = "https://tinyint04.github.io/img/start-walk.gif";
         caballero.style.width = `${130 * escalaCaballero}px`;
         caballero.style.height = `${155 * escalaCaballero}px`;
 
         // Después de 2 segundos (durante el movimiento), comenzamos a mostrar el gif de correr
         setTimeout(() => {
-            caballero.src = "IMG/walk.gif";
+            caballero.src = "https://tinyint04.github.io/img/walk.gif";
             caballero.style.width = `${110 * escalaCaballero}px`;
             caballero.style.height = `${175 * escalaCaballero}px`;
             caballero.style.transform = `translateX(${numM}%)`;
@@ -581,7 +581,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Al cabo de 6 segundos (después de que cambia al gif de ganador), hacemos que se desvanezca suavemente
         setTimeout(() => {
             // Cambiar el gif del caballero al ganador
-            caballero.src = "IMG/end-game.gif";
+            caballero.src = "https://tinyint04.github.io/img/end-game.gif";
             caballero.style.width = `${110 * escalaCaballero}px`;
             caballero.style.height = `${210 * escalaCaballero}px`;
             // Aseguramos que se mantenga en el centro
