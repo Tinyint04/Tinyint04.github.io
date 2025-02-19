@@ -8,92 +8,105 @@
 </head>
 
 <body>
-  <div class="curtain left" style="display: none;"></div>
-  <div class="curtain right" style="display: none;"></div>
+  
+  <div class="curtain left" style="display: none; z-index: 99999;"></div>
+  <div class="curtain right" style="display: none; z-index: 99999;"></div>
 
   <div class="container" id="levels-container">
     <div class="level active" id="level1" onclick="startLevel(1)">1</div>
-    <div class="level disabled" id="level2">2</div>
-    <div class="level disabled" id="level3">3</div>
-    <div class="level disabled" id="level4">4</div>
-    <div class="level disabled" id="level5">5</div>
+    <div class="level disabled" id="level2" onclick="startLevel(2)">2</div>
+    <div class="level disabled" id="level3" onclick="startLevel(3)">3</div>
+    <div class="level disabled" id="level4" onclick="startLevel(4)">4</div>
+    <div class="level disabled" id="level5" onclick="startLevel(5)">5</div>
   </div>
 
   <div class="button-container" id="restart-container">
-    <button onclick="restart()">Reiniciar</button>
+    <div id="game-container">
+      <div id="top-section" class="animationCon">
+        <div id="botones-animacion">
+          <button id="retroalimentacion-btn" style="display: block;">Ver Retroalimentación</button>
+          <button id="terminarNivel" style="display: block;">Terminar</button>
+          <button id="reglasJuego" style="display: block;">Reglas del Juego</button>
+        </div>
+
+        <div id="fight-area" class="contenedor-imagenes">
+          <div class="containerAni" style="z-index: 99999;">
+            <img id="caballero" src="IMG/static.gif" alt="Caballero">
+          </div>
+          <div class="containerAni">
+            <img id="monstruo" src="IMG/staticM.gif" alt="Monstruo">
+          </div>
+        </div>
+      </div>
+
+      <hr />
+
+      <div id="bottom-section">
+        <div id="pregunta-container">
+          <p id="pregunta">Aquí aparecerá la pregunta</p>
+        </div>
+
+        <div id="opciones-container" class="opciones-container"></div>
+
+        <button id="verificar-btn" onclick="verificarRespuesta()">Verificar</button>
+        <div id="resultado"></div>
+      </div>
+    </div>
   </div>
 
+  <!-- Modal de Retroalimentación -->
+  <div id="retroalimentacion-modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Retroalimentación</h2>
+      <div id="retroalimentacion-contenido">
+        <img src="IMG/ejercicio1.png" alt="Explicación">
+        <p>Más contenido de la retroalimentación aquí...</p>
+      </div>
+    </div>
+  </div>
+  <div id="reglas-modal" class="modalreglas">
+    <div class="modal-content2">
+        <span class="closereglas">&times;</span>
+        <h2>Reglas del Juego</h2>
+        <ul>
+            <li><strong>Objetivo:</strong> Resuelve integrales correctamente para atacar al monstruo y avanzar de nivel.</li>
+            <li><strong>Cómo jugar:</strong> En cada nivel, elige la respuesta correcta entre varias opciones.</li>
+            <li><strong>Aciertos:</strong> Si aciertas, el caballero ataca al monstruo.</li>
+            <li><strong>Fallos:</strong> Si fallas, el monstruo ataca al caballero.</li>
+            <li><strong>Vida:</strong> Ambos tienen puntos de vida. Pierdes si el caballero se queda sin vida.</li>
+            <li><strong>Retroalimentación:</strong> Recibirás comentarios sobre respuestas correctas e incorrectas.</li>
+            <li><strong>Avance:</strong> Derrota al monstruo para pasar al siguiente nivel.</li>
+            <li><strong>Victoria:</strong> Ganas al derrotar al monstruo en todos los niveles.</li>
+            <li><strong>Reintento:</strong> Si el caballero pierde, debes intentar el nivel nuevamente.</li>
+        </ul>
+    </div>
+  </div>
+  </div>
+  <script src="JS/Main-animations.js"></script>
   <script>
-    let currentLevel = 1;
-    const levels = document.querySelectorAll(".level");
-    const leftCurtain = document.querySelector(".curtain.left");
-    const rightCurtain = document.querySelector(".curtain.right");
-    const levelsContainer = document.getElementById("levels-container");
-    const restartContainer = document.getElementById("restart-container");
+    var modal = document.getElementById("reglas-modal");
+    var btn = document.getElementById("reglasJuego");
+    var closeBtn = document.querySelector(".closereglas");
 
-    function startLevel(level) {
-      if (level !== currentLevel) return;
-      leftCurtain.style.display = "block";
-      rightCurtain.style.display = "block";
-      setTimeout(() => {
-        closeCurtain();
-      }, 500);
-      setTimeout(() => {
-        levelsContainer.classList.add("hidden");
-        restartContainer.style.display = "block";
-        openCurtain();
-      }, 1500);
-      // Si se pulsa el nivel 1, redirige a page-main.html después de la animación
-      if (level === 1) {
-        setTimeout(() => {
-          window.location.href = "juego.html";
-        }, 2800);
-      }
-    }
+    // Abre el modal cuando se hace clic en el botón
+    btn.onclick = function() {
+        modal.style.display = "block";
+    };
 
-    function closeCurtain() {
-      leftCurtain.style.transform = "translateX(0)";
-      rightCurtain.style.transform = "translateX(0)";
-    }
+    // Cierra el modal cuando se hace clic en la 'X'
+    closeBtn.onclick = function() {
+        modal.style.display = "none";
+    };
 
-    function openCurtain() {
-      setTimeout(() => {
-        leftCurtain.style.transform = "translateX(-102%)";
-        rightCurtain.style.transform = "translateX(102%)";
-      }, 1000);
-      setTimeout(() => {
-        leftCurtain.style.display = "none";
-        rightCurtain.style.display = "none";
-      }, 2200);
-    }
+    // Cierra el modal si el usuario hace clic fuera de él
+    window.onclick = function(event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    };
+</script>
 
-    function restart() {
-      leftCurtain.style.display = "block";
-      rightCurtain.style.display = "block";
-      setTimeout(() => {
-        closeCurtain();
-      }, 500);
-      setTimeout(() => {
-        restartContainer.style.display = "none";
-        levelsContainer.classList.remove("hidden");
-        openCurtain();
-        setTimeout(() => {
-          activateNextLevel();
-        }, 2200);
-      }, 1500);
-    }
-
-    function activateNextLevel() {
-      if (currentLevel < levels.length) {
-        levels[currentLevel - 1].classList.remove("active");
-        levels[currentLevel - 1].classList.add("disabled");
-        currentLevel++;
-        levels[currentLevel - 1].classList.remove("disabled");
-        levels[currentLevel - 1].classList.add("active");
-        levels[currentLevel - 1].setAttribute("onclick", `startLevel(${currentLevel})`);
-      }
-    }
-  </script>
 </body>
 
 </html>
